@@ -6,23 +6,38 @@ import { types } from "../store/StoreReducer";
 import CreateModal from "./CreateModal";
 import Notification from "./Notification";
 import AppBar from "@mui/material/AppBar";
-
 import CssBaseline from "@mui/material/CssBaseline";
-
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
+/**
+ * theme: Tema por defecto MUI
+ */
 const theme = createTheme();
 
+/**
+ * BASE_URL: API de posts
+ */
 const BASE_URL = "https://jsonplaceholder.typicode.com/posts";
 
+/**
+ * Esta función representa el componente de la ruta principal
+ * @returns 
+ */
 const Posts = () => {
+  /**
+   * store: Es donde almacenamos los datos en el estado Global
+   * dispatch: Es la función que permite enviar información al store para actualizarlo
+   */
   // eslint-disable-next-line
   const [store, dispatch] = useContext(StoreContext);
 
+  /**
+   * Esta función utiliza el Hook useEffect para hacer una petición asincrona con axios a BASE_URL y actualiza el store
+   */
   useEffect(() => {
     async function postDataRequest() {
       await axios.get(BASE_URL).then((response) => {

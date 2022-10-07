@@ -6,10 +6,21 @@ import EditModal from "./EditModal";
 import DeleteModal from "./DeleteModal";
 import { StoreContext } from "../store/StoreProvider";
 
+/**
+ * Esta función representa el componente que renderiza la tabla de los posts
+ * @returns 
+ */
 function PostsTable() {
+  /**
+   * store: Es donde almacenamos los datos en el estado Global
+   * postsData: Es la información de los post que serán renderizados
+   */
   const [store] = useContext(StoreContext);
   const { postsData } = store;
 
+  /**
+   * columns: Las columnas de la tabla
+   */
   const columns = [
     { field: "id", headerName: "ID", width: 100 },
     { field: "title", headerName: "Title", width: 400 },
@@ -28,6 +39,9 @@ function PostsTable() {
     },
   ];
 
+  /**
+   * rows: Las filas de la tabla
+   */
   const rows = postsData.map((post) => {
     return {
       id: post.id,

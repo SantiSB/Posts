@@ -9,17 +9,37 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { types } from "../store/StoreReducer";
 import { StoreContext } from "../store/StoreProvider";
 
+/**
+ * Esta función representa el modal para crear un post
+ * @returns
+ */
 function CreateModal() {
+  /**
+   * store: Es donde almacenamos los datos en el estado Global
+   * dispatch: Es la función que permite enviar información al store para actualizarlo
+   */
   const [store, dispatch] = useContext(StoreContext);
 
+  /**
+   * Los useState crean un estado local
+   * {Boolean} open: alamacena "true" si el modal está abierto o "false" si está cerrado
+   */
   const [open, setOpen] = useState(false);
 
-  const { control, formState: { errors }, handleSubmit } = useForm({
+  /**
+   * useForm nos permite controlar la información del formulario facilmente, creamos unos valores por defecto que podemos actualizar con la función "handleSubmit"
+   */
+  const { control, handleSubmit } = useForm({
     defaultValues: {
       title: "",
       body: "",
     },
   });
+
+  /**
+   *Esta función crea un nuevo Post
+   * @param {Array} data almacena la información del formulario
+   */
   const onSubmit = (data) => {
     var newPost = {
       id: store.postsData.length + 1,
@@ -32,10 +52,16 @@ function CreateModal() {
     dispatch({ type: types.handleNotification });
   };
 
+  /**
+   * Esta función abre el modal
+   */
   const handleClickOpen = () => {
     setOpen(true);
   };
 
+  /**
+   * Esta función cierra el modal
+   */
   const handleClose = () => {
     setOpen(false);
   };
@@ -62,8 +88,6 @@ function CreateModal() {
                   fullWidth
                   variant="standard"
                   {...field}
-                  aria-invalid={errors.title ? "true" : "false"} 
-                  required
                 />
               )}
             />
