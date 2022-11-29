@@ -9,41 +9,41 @@ import { StoreContext } from "../store/StoreProvider";
 import { types } from "../store/StoreReducer";
 
 /**
- * Esta función representa el modal para eliminar un post
- * @param {Object} cellValues representa la información de la celda que se desea editar 
+ * This function renders the modal to delete a post
+ * @param {Object} cellValues represents the cell information you want to edit 
  * @returns 
  */
 function DeleteModal({ cellValues }) {
   /**
-   * store: Es donde almacenamos los datos en el estado Global
-   * dispatch: Es la función que permite enviar información al store para actualizarlo
+   * store: It is where we store the data in the Global state
+   * dispatch: It is the function that allows sending information to the store to update it
    */
   // eslint-disable-next-line
   const [store, dispatch] = useContext(StoreContext);
 
   /**
-   * Los useState crean un estado local
-   * {Boolean} open: alamacena "true" si el modal está abierto o "false" si está cerrado
+   * useStates create a local state
+   * {Boolean} open: stores "true" if the modal is open or "false" if it is closed
    */
   const [open, setOpen] = useState(false);
 
   /**
-   * Esta función abre el modal
+   * This function opens the modal
    */
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   /**
-   * Esta función cierra el modal
+   * This function closes the modal
    */
   const handleClose = () => {
     setOpen(false);
   };
 
   /**
-   * Esta función elimina el post que se está manipulando 
-   * @param {Object} cellValues representa la información de la celda que se desea editar
+   * This function removes the post being manipulated
+   * @param {Object} cellValues represents the cell information you want to edit
    */
   const deletePost = (cellValues) => {
     dispatch({ type: types.deletePost, payload: cellValues.row });

@@ -1,5 +1,5 @@
 /**
- * types: es un objeto de tipos de accion, sirven para enviar instrucciones especificas de acuerdo a la acción que ejecute el usuario
+ * types: it is an object of action types, they are used to send specific instructions according to the action executed by the user
  */
 const types = {
   setPostData: "setPosts",
@@ -10,7 +10,7 @@ const types = {
 };
 
 /**
- * El estado global inicial de nuestra aplicación
+ * The initial global state of our application
  */
 const initialStore = {
   postsData: [{ id: "id", title: "title", body: "body", userId: "userId" }],
@@ -18,15 +18,15 @@ const initialStore = {
 };
 
 /**
- * Esta función representa el reducer de la aplicación, dependiendo del action.type que reciba por parametro ejecutará una acción diferente que actualizara el "initialStore"
- * @param {Object} state Almacena el estado global inicial de nuestra aplicación
- * @param {Object} action Almacena la información de la acción que ejecuta el usuario, aquí encontramos el "type" que indica el tipo de acción y un "payload" que almacena información que puede ser utilizada para actualizar el "initialStore"
+ * This function represents the reducer of the application, depending on the action.type that it receives as a parameter, it will execute a different action that will update the "initialStore"
+ * @param {Object} state Stores the initial global state of our application
+ * @param {Object} action It stores the information of the action that the user executes, here we find the "type" that indicates the type of action and a "payload" that stores information that can be used to update the "initialStore"
  * @returns
  */
 const storeReducer = (state, action) => {
   switch (action.type) {
     /**
-     * case para cargar los post al iniciar la aplicación
+     * case to load the posts when starting the application
      */
     case types.setPosts:
       return {
@@ -34,7 +34,7 @@ const storeReducer = (state, action) => {
         postsData: action.payload,
       };
     /**
-     * case para eliminar un post
+     * case to delete a post
      */
     case types.deletePost:
       return {
@@ -44,7 +44,7 @@ const storeReducer = (state, action) => {
         ),
       };
     /**
-     * case para actualizar un post
+     * case to update a post
      */
     case types.updatePost:
       return {
@@ -54,7 +54,7 @@ const storeReducer = (state, action) => {
         ),
       };
     /**
-     * case para crear un post
+     * case to create a post
      */
     case types.createPost:
       return {
@@ -62,7 +62,7 @@ const storeReducer = (state, action) => {
         postsData: state.postsData.concat(action.payload),
       };
     /**
-     * case para mostrar u ocultar una notificación
+     * case to show or hide a notification
      */
     case types.handleNotification:
       return {

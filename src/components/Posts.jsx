@@ -14,29 +14,29 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 /**
- * theme: Tema por defecto MUI
+ * theme: MUI default theme
  */
 const theme = createTheme();
 
 /**
- * BASE_URL: API de posts
+ * BASE_URL: Post API
  */
 const BASE_URL = "https://jsonplaceholder.typicode.com/posts";
 
 /**
- * Esta función representa el componente de la ruta principal
- * @returns 
+ * This function represents the main path component
+ * @returns
  */
 const Posts = () => {
   /**
-   * store: Es donde almacenamos los datos en el estado Global
-   * dispatch: Es la función que permite enviar información al store para actualizarlo
+   * store: It is where we store the data in the Global state
+   * dispatch: It is the function that allows sending information to the store to update it
    */
   // eslint-disable-next-line
   const [store, dispatch] = useContext(StoreContext);
 
   /**
-   * Esta función utiliza el Hook useEffect para hacer una petición asincrona con axios a BASE_URL y actualiza el store
+   * This function uses the useEffect Hook to make an asynchronous request with axios to BASE_URL and updates the store
    */
   useEffect(() => {
     async function postDataRequest() {

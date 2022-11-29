@@ -7,19 +7,19 @@ import DeleteModal from "./DeleteModal";
 import { StoreContext } from "../store/StoreProvider";
 
 /**
- * Esta función representa el componente que renderiza la tabla de los posts
+ * This function represents the component that renders the posts table
  * @returns 
  */
 function PostsTable() {
   /**
-   * store: Es donde almacenamos los datos en el estado Global
-   * postsData: Es la información de los post que serán renderizados
+   * store: It is where we store the data in the Global state
+    * postsData: It is the information of the posts that will be rendered
    */
   const [store] = useContext(StoreContext);
   const { postsData } = store;
 
   /**
-   * columns: Las columnas de la tabla
+   * columns: The columns of the table
    */
   const columns = [
     { field: "id", headerName: "ID", width: 100 },
@@ -40,7 +40,7 @@ function PostsTable() {
   ];
 
   /**
-   * rows: Las filas de la tabla
+   * rows: The rows of the table
    */
   const rows = postsData.map((post) => {
     return {

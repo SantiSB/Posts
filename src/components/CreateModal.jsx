@@ -10,24 +10,24 @@ import { types } from "../store/StoreReducer";
 import { StoreContext } from "../store/StoreProvider";
 
 /**
- * Esta función representa el modal para crear un post
+ * This function renders the modal to create a post
  * @returns
  */
 function CreateModal() {
   /**
-   * store: Es donde almacenamos los datos en el estado Global
-   * dispatch: Es la función que permite enviar información al store para actualizarlo
+   * store: It is where we store the data in the Global state
+   * dispatch: It is the function that allows sending information to the store to update it
    */
   const [store, dispatch] = useContext(StoreContext);
 
   /**
-   * Los useState crean un estado local
-   * {Boolean} open: alamacena "true" si el modal está abierto o "false" si está cerrado
+   * useState create a local state
+   * {Boolean} open: stores "true" if the modal is open or "false" if it is closed
    */
   const [open, setOpen] = useState(false);
 
   /**
-   * useForm nos permite controlar la información del formulario facilmente, creamos unos valores por defecto que podemos actualizar con la función "handleSubmit"
+   * useForm allows us to control the form information easily, we create some default values that we can update with the "handleSubmit" function
    */
   const { control, handleSubmit } = useForm({
     defaultValues: {
@@ -37,8 +37,8 @@ function CreateModal() {
   });
 
   /**
-   *Esta función crea un nuevo Post
-   * @param {Array} data almacena la información del formulario
+   *This function creates a new Post
+   * @param {Array} data stores the form information
    */
   const onSubmit = (data) => {
     var newPost = {
@@ -53,14 +53,14 @@ function CreateModal() {
   };
 
   /**
-   * Esta función abre el modal
+   * This function opens the modal
    */
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   /**
-   * Esta función cierra el modal
+   * This function closes the modal
    */
   const handleClose = () => {
     setOpen(false);

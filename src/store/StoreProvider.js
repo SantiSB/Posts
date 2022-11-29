@@ -2,20 +2,20 @@ import { createContext, useReducer } from "react";
 import storeReducer, { initialStore } from "./StoreReducer";
 
 /**
- * Creación del contexto de la aplicación
+ * Create the application context
  */
 const StoreContext = createContext();
 
 /**
- * Esta función representa el Provider que utilizaremos para envolver la aplicación y proporcionar un estado global
- * @param {Component} children representa el componente hijo que será envuelto por el provider
- * @returns 
+ * This function represents the Provider that we will use to wrap the application and provide a global state
+ * @param {Component} children represents the child component that will be wrapped by the provider
+ * @returns
  */
 const StoreProvider = ({ children }) => {
   /**
-   * useReducer nos permite crear un estado con una función actualizadora
-   * store: Es donde almacenamos los datos en el estado Global
-   * dispatch: Es la función que permite enviar información al store para actualizarlo
+   * useReducer allows us to create a state with an updater function
+   * store: It is where we store the data in the Global state
+   * dispatch: It is the function that allows sending information to the store to update it
    */
   const [store, dispatch] = useReducer(storeReducer, initialStore);
   return (

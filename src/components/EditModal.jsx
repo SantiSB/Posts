@@ -11,41 +11,41 @@ import { StoreContext } from "../store/StoreProvider";
 import { types } from "../store/StoreReducer";
 
 /**
- * Esta función representa el modal para editar un post
- * @param {Object} cellValues representa la información de la celda que se desea editar 
- * @returns 
+ * This function represents the modal to edit a post
+ * @param {Object} cellValues represents the cell information you want to edit
+ * @returns
  */
 function EditModal({ cellValues }) {
   // eslint-disable-next-line
   const [store, dispatch] = useContext(StoreContext);
 
   /**
-   * Los useState crean un estado local
-   * {Boolean} open: alamacena "true" si el modal está abierto o "false" si está cerrado
-   * {String} title: almacena el titulo que hay en el formulario
-   * {String} body: almacena el comentario que hay en el formulario
+   * useState create a local state
+   * {Boolean} open: stores "true" if the modal is open or "false" if it is closed
+   * {String} title: stores the title of the form
+   * {String} body: stores the comment in the form
    */
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState(cellValues.row.title);
   const [body, setBody] = useState(cellValues.row.body);
 
   /**
-   * Esta función abre el modal
+   * This function opens the modal
    */
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   /**
-   * Esta función cierra el modal
+   * This function closes the modal
    */
   const handleClose = () => {
     setOpen(false);
   };
 
   /**
-   * Esta función actualiza el post que se está editando 
-   * @param {Object} cellValues representa la información de la celda que se desea editar
+   * This function updates the post being edited
+   * @param {Object} cellValues represents the cell information you want to edit
    */
   const updatePost = (cellValues) => {
     var newPost = {
